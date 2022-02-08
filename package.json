@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "build": "tsc --build && cp src/*.scss dist/"
+    "build": "tsc --build && npm run copy:styles",
+    "copy:styles": "copyfiles -u 1 src/**/*.scss dist"
   },
   "files": [
     "dist"
