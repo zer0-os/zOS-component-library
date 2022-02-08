@@ -1,0 +1,41 @@
+{
+  "name": "@zer0-os/zos-component-library",
+  "version": "0.1.0",
+  "description": "component library for zos",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "build": "tsc --build && cp src/*.scss dist/"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": "https://github.com/zer0-os/zOS-component-library.git",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.8",
+    "@babel/preset-react": "^7.16.7",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/enzyme": "^3.10.10",
+    "@types/jest": "^24.9.1",
+    "babel-jest": "^27.4.6",
+    "enzyme": "^3.11.0",
+    "jest": "^27.4.7",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "@wojtekmaj/enzyme-adapter-react-17": "0.6.5"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "dependencies": {
+    "typescript": "^4.1.6"
+  }
+}
