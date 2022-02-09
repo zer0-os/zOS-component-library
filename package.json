@@ -7,7 +7,9 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "build": "tsc --build && npm run copy:styles",
-    "copy:styles": "copyfiles -u 1 src/**/*.scss dist"
+    "copy:styles": "copyfiles -u 1 src/**/*.scss dist",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "files": [
     "dist"
@@ -23,10 +25,15 @@
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-react": "^7.16.7",
     "@babel/preset-typescript": "^7.16.7",
+    "@storybook/addon-actions": "^6.4.18",
+    "@storybook/addon-essentials": "^6.4.18",
+    "@storybook/addon-links": "^6.4.18",
+    "@storybook/react": "^6.4.18",
     "@types/enzyme": "^3.10.10",
     "@types/jest": "^24.9.1",
     "@wojtekmaj/enzyme-adapter-react-17": "0.6.5",
     "babel-jest": "^27.4.6",
+    "babel-loader": "^8.2.3",
     "copyfiles": "^2.4.1",
     "enzyme": "^3.11.0",
     "jest": "^27.4.7",
