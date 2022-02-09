@@ -27,6 +27,7 @@
     "src/**/*"
   ],
   "exclude": [
+    "src/stories",
     "src/**/*.test.*",
     "src/**/*.test.d.*",
     "src/setupTests.ts"
