@@ -7,7 +7,7 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "build": "tsc --build && npm run copy:styles",
-    "copy:styles": "copyfiles -u 1 src/**/*.scss dist",
+    "copy:styles": "copyfiles -u 1 -e \"src/stories/**/*\" \"src/**/*.css\" dist",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
