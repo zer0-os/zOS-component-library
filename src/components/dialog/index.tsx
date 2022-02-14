@@ -3,8 +3,6 @@ import classNames from 'classnames';
 import { Portal } from 'react-portal';
 import { Context as EscapeManagerContext } from '../../lib/escape-manager';
 
-import './styles.scss';
-
 export interface Properties {
   className?: string;
   onClose?: () => void;
