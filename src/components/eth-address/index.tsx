@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import './styles.scss';
-
 export interface Properties {
   address: string;
 

@@ -3,8 +3,6 @@ import classNames from 'classnames';
 
 import { wallets, WalletType } from './wallets';
 
-import './styles.scss';
-
 export interface Properties {
   isConnecting: boolean;
   className?: string;
