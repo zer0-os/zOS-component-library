@@ -12,24 +12,6 @@ export interface Properties {
   onSelect?: (connector: WalletType) => void;
 }
 
-const providerConfig = {
-  [WalletType.Metamask]: {
-    imageSource: 'metamask.svg',
-  },
-  [WalletType.WalletConnect]: {
-    imageSource: 'walletconnect.svg',
-  },
-  [WalletType.Coinbase]: {
-    imageSource: 'coinbasewallet.svg',
-  },
-  [WalletType.Fortmatic]: {
-    imageSource: 'fortmatic.svg',
-  },
-  [WalletType.Portis]: {
-    imageSource: 'portis.svg',
-  },
-};
-
 export class WalletSelect extends React.Component<Properties> {
   private clickHandlers: any = {};
 
@@ -63,8 +45,7 @@ export class WalletSelect extends React.Component<Properties> {
 
   renderWallets() {
     return this.wallets.map(walletType => {
-      const { type, name } = wallets[walletType];
-      const imageSource = [process.env.PUBLIC_URL, 'assets', providerConfig[type].imageSource].join('/');
+      const { type, name, imageSource } = wallets[walletType];
 
       return (
         <li key={type} className='wallet-select-selector__wallet-provider' onClick={this.getClickHandler(type)}>
