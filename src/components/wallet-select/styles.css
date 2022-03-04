@@ -1,18 +1,94 @@
-.wallet-select {
-  width: 100%;
-  background-color: white;
+.wallet-select-modal .dialog__content {
+  width: 304px;
 }
 
-.wallet-select__wallet {
-  padding: 10px 0 10px 25px;
-  border-bottom: 1px solid #CCCCCC;
+.wallet-select {
+  background: var(--dialog-background-color);
+  border-radius: var(--box-radius);
+  overflow: hidden;
+  -webkit-filter: drop-shadow(0 20px 20px var(--drop-shadow-secondary-color));
+  filter: drop-shadow(0 20px 20px var(--drop-shadow-secondary-color));
+}
+
+.wallet-select hr {
+  margin: 0 33px;
+}
+
+.wallet-select ul {
+  padding: 18px 0;
+}
+
+.wallet-select__header {
+  width: 100%;
+  padding-top: 38px;
+  padding-bottom: 31px;
+  text-align: center;
+}
+
+.wallet-select__header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.wallet-select-selector__wallet-provider {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 40px;
+  color: #fff;
+  font-size: 16px;
   cursor: pointer;
 }
 
-.wallet-select__wallet:hover {
-  background-color: rgba(0,0,0,0.15);
+.wallet-select-selector__wallet-provider::before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 0;
+  box-shadow: 0px 0px 20px 20px rgba(60, 161, 255, 0.8);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
 }
 
-.wallet-select__wallet:last-child {
-  border-bottom: none;
+.wallet-select-selector__wallet-provider:hover {
+  background: rgba(60,161,255,.05);
+}
+
+.wallet-select-selector__wallet-provider:hover::before {
+  opacity: 1;
+}
+
+.wallet-select-selector__wallet-provider-logo {
+  border-radius: 50%;
+  background-color: var(--accent-color-mid);
+  padding: 3px;
+}
+
+.wallet-select-selector__wallet-provider-logo img {
+  width: 36px;
+  height: 36px;
+  transition: opacity var(--animation-time-medium) ease-in-out;
+}
+
+.wallet-select__footer {
+  text-align: center;
+  font-size: 14px;
+  padding: 18px;
+  line-height: 22px;
+}
+
+.wallet-select__footer a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.wallet-select__connecting-indicator {
+  text-align: center;
+  padding: 18px 0;
 }
