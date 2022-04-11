@@ -15,13 +15,13 @@ export class Dialog extends React.Component<Properties> {
     // See note in test file. This is conditional due to
     // incompatibilities between function and class components
     // in react and the resulting enzyme support.
-    if (this.context.register) {
+    if (this.context?.register) {
       this.context.register(this.props.onClose);
     }
   }
 
   componentWillUnmount() {
-    if (this.context.unregister) {
+    if (this.context?.unregister) {
       this.context.unregister();
     }
   }

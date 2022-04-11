@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC, useCallback } from 'react';
 import classNames from 'classnames';
 
 export interface Properties {
@@ -8,14 +8,22 @@ export interface Properties {
   onClick?: () => void;
 }
 
-export class Button extends React.Component<Properties> {
-  handleClick = () => this.props.onClick && this.props.onClick();
+export const Button: FC<Properties> = ({
+  label,
+  className,
+  onClick,
+  children,
+  ...rest
+}) => {
+  const handleClick = useCallback(() => onClick && onClick(), []);
 
-  render() {
-    return (
-      <div className={classNames('button', this.props.className)} onClick={this.handleClick}>
-        <span className='button__label'>{this.props.label || this.props.children}</span>
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      className={classNames('button', className)}
+      onClick={handleClick}
+      {...rest}
+    >
+      <span className='button__label'>{label || children}</span>
+    </div>
+  );
+};
