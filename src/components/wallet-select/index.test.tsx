@@ -61,7 +61,7 @@ describe('WalletSelect', () => {
 
     const wrapper = subject({ wallets, onSelect });
 
-    wrapper.find('.wallet-select__wallet').at(0).simulate('click');
+    wrapper.find('.wallet-select__wallet-provider').at(0).simulate('click');
 
     expect(onSelect).toHaveBeenCalledWith(WalletType.Metamask);
   });
