@@ -48,10 +48,10 @@ export class WalletSelect extends React.Component<Properties> {
       const { type, name, imageSource } = wallets[walletType];
 
       return (
-        <li key={type} className='wallet-select-selector__wallet-provider' onClick={this.getClickHandler(type)}>
-          {name}
+        <li key={type} className='wallet-select__wallet-provider' onClick={this.getClickHandler(type)}>
+          <span className='wallet-select__wallet-name'>{name}</span>
           <div>
-            <div className='wallet-select-selector__wallet-provider-logo'>
+            <div className='wallet-select__wallet-provider-logo'>
               <img src={imageSource} alt={name} />
             </div>
           </div>
