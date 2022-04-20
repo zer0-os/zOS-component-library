@@ -12,15 +12,13 @@
 
 .icon-button__icon.zui-chevron-left path,
 .icon-button__icon.zui-chevron-right path {
-  path {
-    fill: var(--font-color-primary);
-  }
+  fill: var(--font-color-primary);
 }
 
 .icon-button__icon.zui-sun path {
-    stroke: var(--font-color-primary);
+  stroke: var(--font-color-primary);
 }
 
 .icon-button__icon.zui-moon path {
-    stroke: var(--font-color-primary);
+  stroke: var(--font-color-primary);
 }
