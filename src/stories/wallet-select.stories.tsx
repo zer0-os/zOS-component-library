@@ -3,6 +3,8 @@ import { ComponentMeta } from '@storybook/react';
 
 import { WalletSelect } from '../components/wallet-select';
 
+import './wallet-select.css';
+
 export default {
   title: 'Wallet Select',
   component: WalletSelect,

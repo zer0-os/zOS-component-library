@@ -3,6 +3,8 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Button } from '../components/button';
 
+import './button.css';
+
 export default {
   title: 'Button',
   component: Button,

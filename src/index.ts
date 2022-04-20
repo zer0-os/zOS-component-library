@@ -1,3 +1,4 @@
+export { IconButton } from './components/icon-button';
 export { Button } from './components/button';
 export { Dialog } from './components/dialog';
 export { EthAddress } from './components/eth-address';
