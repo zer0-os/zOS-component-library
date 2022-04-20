@@ -1,0 +1,9 @@
+.storybook-icon-button.icon-button .icon-button__icon path {
+  stroke: black;
+}
+
+.storybook-icon-button.icon-button .icon-button__icon.zui-chevron-left path,
+.storybook-icon-button.icon-button .icon-button__icon.zui-chevron-right path {
+  fill: black;
+  stroke: none;
+}
