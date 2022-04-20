@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { getIcon, Icons } from './icons';
 
-import './styles.scss';
+import './styles.css';
 
 interface PublicProperties {
   icon: Icons;
