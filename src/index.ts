@@ -10,3 +10,5 @@ export {
   Context as EscapeManagerContext,
   Provider as EscapeManagerProvider,
 } from './lib/escape-manager';
+
+export { Spinner } from './components/spinner';
