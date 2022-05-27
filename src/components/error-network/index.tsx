@@ -3,17 +3,17 @@ import React from 'react';
 import './styles.css';
 
 export interface Properties {
-  supportedChainId: string;
+  supportedNetwork: string;
 }
 
 export class ErrorNetwork extends React.Component<Properties> {
   render() {
-    const supportedChainId = this.props.supportedChainId;
+    const supportedNetwork = this.props.supportedNetwork;
 
     return (
       <div className="error-network">
-        <span title={supportedChainId} className="error-network__chainId">
-          Please switch to Supported Network {supportedChainId} in your wallet before connecting
+        <span title={supportedNetwork} className="error-network__chainId">
+          Please switch to supported Network {supportedNetwork} in your wallet before connecting
         </span>
       </div>
     );

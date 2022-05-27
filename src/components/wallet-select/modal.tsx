@@ -5,13 +5,13 @@ import { Dialog } from '../dialog';
 import { WalletSelect, Properties as WalletSelectProperties } from '.';
 import { WalletType } from './wallets';
 import { ErrorNetwork } from '../error-network';
-import { config } from '../../config';
 
 export interface Properties extends WalletSelectProperties {
   isConnecting: boolean;
   isNotSupportedNetwork: boolean;
   wallets: WalletType[];
   className?: string;
+  networkName: string;
   onClose?: () => void;
   onSelect?: (connector: WalletType) => void;
 }
@@ -35,7 +35,7 @@ export class WalletSelectModal extends React.Component<Properties> {
           onSelect={this.props.onSelect}
         />
         {this.supportedNetwork && (
-          <ErrorNetwork supportedChainId={config.supportedChainId} />
+          <ErrorNetwork supportedNetwork={this.props.networkName} />
         )}
       </Dialog>
     );
