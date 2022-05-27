@@ -6,11 +6,14 @@ import { Dialog } from '../dialog';
 import { WalletSelect } from '.';
 import { WalletSelectModal } from './modal';
 import {WalletType} from './wallets';
+import { ErrorNetwork } from '../error-network';
 
 describe('WalletSelect/Modal', () => {
   const subject = (props: any = {}) => {
     const allProps = {
       isConnecting: false,
+      networkName: '',
+      isNotSupportedNetwork: false,
       ...props,
     };
 
@@ -59,5 +62,11 @@ describe('WalletSelect/Modal', () => {
     const wrapper = subject({ isConnecting: true });
 
     expect(wrapper.find(WalletSelect).prop('isConnecting')).toBe(true);
+  });
+
+  it('passes supportedNetwork to errorNetwork', () => {
+    const wrapper = subject({ networkName: 'MainNet', isNotSupportedNetwork: true });
+
+    expect(wrapper.find(ErrorNetwork).prop('supportedNetwork')).toBe('MainNet');
   });
 });

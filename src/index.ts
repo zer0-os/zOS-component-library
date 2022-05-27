@@ -12,3 +12,4 @@ export {
 } from './lib/escape-manager';
 
 export { Spinner } from './components/spinner';
+export { ErrorNetwork } from './components/error-network';
