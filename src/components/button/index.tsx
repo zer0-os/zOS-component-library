@@ -30,7 +30,9 @@ export const Button: FC<Properties> = ({
     >
       <div className='button__content'>
         <div className='connect-wallet-button__container'>
-          <strong className='connect-wallet-button__title'>
+          <strong
+            className={classNames('connect-wallet-button__title', 'bold')}
+          >
             {label || children}
           </strong>
         </div>

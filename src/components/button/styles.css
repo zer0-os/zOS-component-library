@@ -16,6 +16,7 @@
   text-transform: uppercase;
   transition: opacity var(--animation-time-short) ease-in-out;
 }
+
 .button__container .button__content {
   margin: 0 8px;
   color: var(--font-color-primary);
@@ -55,7 +56,7 @@
   opacity: 1;
 }
 .button__glow:active .button__wash {
-  opacity: 0 !important;
+  opacity: 0;
 }
 .button__glow:before {
   content: ' ';
@@ -90,6 +91,6 @@
   margin: 0 1rem;
   display: contents;
 }
-strong {
+.bold {
   font-weight: 700;
 }
