@@ -21,7 +21,7 @@ describe('Button', () => {
   it('renders label text', () => {
     const wrapper = subject({ label: 'click me' });
 
-    const label = wrapper.find('.button__label');
+    const label = wrapper.find('.button__content');
 
     expect(label.text().trim()).toBe('click me');
   });
@@ -29,7 +29,7 @@ describe('Button', () => {
   it('does not render children if label provided', () => {
     const wrapper = subject({ label: 'click me' }, <div className='cats' />);
 
-    const child = wrapper.find('.button__label .cats');
+    const child = wrapper.find('.button__content .cats');
 
     expect(child.exists()).toBe(false);
   });
@@ -37,7 +37,7 @@ describe('Button', () => {
   it('renders child text', () => {
     const wrapper = subject({}, 'Click me for a surprise!');
 
-    const label = wrapper.find('.button__label');
+    const label = wrapper.find('.button__content');
 
     expect(label.text().trim()).toBe('Click me for a surprise!');
   });
@@ -45,7 +45,7 @@ describe('Button', () => {
   it('renders child element', () => {
     const wrapper = subject({}, <div className='what' />);
 
-    const child = wrapper.find('.button__label .what');
+    const child = wrapper.find('.button__content .what');
 
     expect(child.exists()).toBe(true);
   });

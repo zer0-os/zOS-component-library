@@ -1,15 +1,96 @@
-.button {
-  display: inline-block;
-  border: 1px solid var(--primary-border-color);
-  border-radius: 24px;
-  padding: 10px 20px;
+.button__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32px;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: var(--color);
+  background-color: var(--button-background-color);
+  border-radius: var(--button-box-radius);
+  opacity: 0.6;
+  box-shadow: 0 0 15px 4px var(--button-box-shadow-light);
+  overflow: hidden;
   cursor: pointer;
-  background-color: var(--background-color-primary);
+  text-transform: uppercase;
+  transition: opacity var(--animation-time-short) ease-in-out;
 }
 
-.button__label {
-  text-shadow:
-    0px 0px 6px var(--drop-shadow-secondary-color)
-    0px 0px 12px var(--drop-shadow-primary-color)
-    0px 0px 24px var(--drop-shadow-primary-color);
+.button__container .button__content {
+  margin: 0 8px;
+  color: var(--font-color-primary);
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  text-shadow: var(--glow-text-white);
+  z-index: 2;
+  transition: color var(--animation-time-short) ease-in-out,
+    text-shadow var(--animation-time-short) ease-in-out;
+}
+.button__container .button__wash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--button-box-shadow);
+  transition: opacity var(--animation-time-short) ease-in-out;
+  opacity: 0;
+  z-index: 0;
+}
+.button__container:after {
+  content: ' ';
+  width: calc(100% - 4px);
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: inherit;
+  border-left: 2px solid var(--button-border-color);
+  border-right: 2px solid var(--button-border-color);
+  transition: border-color var(--animation-time-short) ease-in-out;
+}
+.button__glow {
+  background: var(--button-background-color);
+  opacity: 1;
+}
+.button__glow:active .button__wash {
+  opacity: 0;
+}
+.button__glow:before {
+  content: ' ';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 0;
+  box-shadow: 0 0 25px 9px var(--button-box-shadow-heavy);
+}
+
+.button__glow:hover:after {
+  border-color: var(--button-border-color-hover);
+}
+.button__glow:hover .button__wash {
+  opacity: 1;
+}
+.button__container.button__disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+.button__container .button__loading {
+  padding-top: 0;
+}
+.connect-wallet-button__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.connect-wallet-button__title {
+  margin: 0 1rem;
+  display: contents;
+}
+.bold {
+  font-weight: 700;
 }
