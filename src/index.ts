@@ -13,3 +13,4 @@ export {
 
 export { Spinner } from './components/spinner';
 export { ErrorNetwork } from './components/error-network';
+export { ZnsLink } from './components/zns-link';
