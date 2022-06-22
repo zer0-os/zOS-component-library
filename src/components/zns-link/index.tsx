@@ -14,7 +14,7 @@ interface Properties extends PublicProperties {
 }
 
 export class Component extends React.Component<Properties> {
-  pathRegex = /\/([a-zA-Z.]+)\/(\w+)/;
+  pathRegex = /\/([a-zA-Z0-9.]+)\/(\w+)/;
 
   get route() {
     if (!this.props.route) return this.zosLocation.route;
