@@ -32,6 +32,12 @@ describe('ZnsLink', () => {
     expect(wrapper.find(Link).prop('to')).toBe('/burgers.cheese/members');
   });
 
+  it('uses current route if no route provided and route has digits', () => {
+    const wrapper = subject({ location: { pathname: '/burgers.cheese37.0/feed' }, app: 'members' });
+
+    expect(wrapper.find(Link).prop('to')).toBe('/burgers.cheese37.0/members');
+  });
+
   it('uses current app if no app provided', () => {
     const wrapper = subject({ location: { pathname: '/burgers.cheese/feed' }, route: 'tacos.street.pollo' });
 
