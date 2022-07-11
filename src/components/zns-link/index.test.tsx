@@ -26,6 +26,35 @@ describe('ZnsLink', () => {
     expect(wrapper.find(Link).prop('to')).toBe('/tacos.street.pollo/feed');
   });
 
+  it('renders link for route with app when to provided', () => {
+    const wrapper = subject({
+      to: 'yo',
+      app: 'feed',
+      route: 'tacos.street.pollo',
+    });
+
+    expect(wrapper.find(Link).prop('to')).toBe('/tacos.street.pollo/feed/yo');
+  });
+
+  it('handles to with leading slash', () => {
+    const wrapper = subject({
+      to: '/yo',
+      app: 'feed',
+      route: 'tacos.street.pollo',
+    });
+
+    expect(wrapper.find(Link).prop('to')).toBe('/tacos.street.pollo/feed/yo');
+  });
+
+  it('renders contextual link when only to provided', () => {
+    const wrapper = subject({
+      to: 'yo',
+      location: { pathname: '/burgers.cheese37.0/feed' }
+    });
+
+    expect(wrapper.find(Link).prop('to')).toBe('/burgers.cheese37.0/feed/yo');
+  });
+
   it('uses current route if no route provided', () => {
     const wrapper = subject({ location: { pathname: '/burgers.cheese/feed' }, app: 'members' });
 

@@ -6,7 +6,8 @@ import classNames from 'classnames';
 export interface PublicProperties {
   className?: string;
   app?: string;
-  route: string;
+  route?: string;
+  to?: string;
 }
 
 interface Properties extends PublicProperties {
@@ -29,7 +30,13 @@ export class Component extends React.Component<Properties> {
   }
 
   get fullRoute() {
-    return `/${this.route}/${this.app}`;
+    return `/${this.route}/${this.app}${this.path}`;
+  }
+
+  get path() {
+    if (!this.props.to) return '';
+
+    return `/${this.props.to}`.replaceAll('//', '/');
   }
 
   get zosLocation() {
