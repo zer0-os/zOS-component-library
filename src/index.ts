@@ -1,6 +1,7 @@
 export { IconButton } from './components/icon-button';
 export { Icons } from './components/icon-button/icons';
 export { Button } from './components/button';
+export { ButtonLink } from './components/button-link'
 export { Dialog } from './components/dialog';
 export { EthAddress } from './components/eth-address';
 export { WalletType } from './components/wallet-select/wallets';
@@ -13,4 +14,5 @@ export {
 
 export { Spinner } from './components/spinner';
 export { ErrorNetwork } from './components/error-network';
+export { VideoPlayer } from './components/video-player';
 export { ZnsLink } from './components/zns-link';
