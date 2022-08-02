@@ -7,7 +7,7 @@ export interface Properties {
   openInNewTab?: boolean;
 }
 
-export class ButtonLink extends React.Component<Properties, undefined> {
+export class ButtonLink extends React.Component<Properties> {
   get href() {
     const { url } = this.props;
     let protocol = '';
@@ -20,7 +20,7 @@ export class ButtonLink extends React.Component<Properties, undefined> {
   }
 
   renderLink() {
-    const linkProps: any = {
+    const linkProps: HTMLAnchorElement = {
       className: classNames('button-link', this.props.className),
       href: this.href,
     };
@@ -32,9 +32,7 @@ export class ButtonLink extends React.Component<Properties, undefined> {
 
     return (
       <a {...linkProps}>
-        <div className='button-link__label'>
-          {this.props.children}
-        </div>
+        {this.props.children}
       </a>
     );
   }

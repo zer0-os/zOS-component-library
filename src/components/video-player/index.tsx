@@ -2,6 +2,8 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import classNames from 'classnames';
 
+const NOT_LOADED_SIZE = '0px';
+
 export interface Properties {
   url: string;
   className?: string;
@@ -41,7 +43,7 @@ export class VideoPlayer extends React.Component<Properties, State> {
   }
 
   get hasDimensions() {
-    return this.state.width !== '0px' && this.state.height !== '0px';
+    return this.state.width !== NOT_LOADED_SIZE && this.state.height !== NOT_LOADED_SIZE;
   }
 
   render() {
