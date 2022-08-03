@@ -1,5 +1,10 @@
 export { IconButton } from './components/icon-button';
 export { Icons } from './components/icon-button/icons';
+
+export { BackgroundImage } from './components/background-image';
+import { Properties as BackgroundImageProperties } from './components/background-image';
+export type { BackgroundImageProperties };
+
 export { Button } from './components/button';
 export { ButtonLink } from './components/button-link'
 export { Dialog } from './components/dialog';
