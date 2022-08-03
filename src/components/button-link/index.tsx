@@ -20,7 +20,7 @@ export class ButtonLink extends React.Component<Properties> {
   }
 
   renderLink() {
-    const linkProps: HTMLAnchorElement = {
+    const linkProps: any = {
       className: classNames('button-link', this.props.className),
       href: this.href,
     };
