@@ -23,7 +23,22 @@ describe('ZnsLink', () => {
   it('renders link for route with app', () => {
     const wrapper = subject({ app: 'feed', route: 'tacos.street.pollo' });
 
-    expect(wrapper.find(Link).prop('to')).toBe('/tacos.street.pollo/feed');
+    expect(wrapper.find(Link).prop('to')).toBe('/0.tacos.street.pollo/feed');
+  });
+
+  it('renders link for route with leading zero and app', () => {
+    const wrapper = subject({ app: 'feed', route: '0.tacos.street.pollo' });
+
+    expect(wrapper.find(Link).prop('to')).toBe('/0.tacos.street.pollo/feed');
+  });
+
+  it('renders link for root route', () => {
+    const wrapper = subject({
+      location: { pathname: '/0.burgers.cheese37.0/feed' },
+      route: '0',
+    });
+
+    expect(wrapper.find(Link).prop('to')).toBe('/0/feed');
   });
 
   it('renders link for route with app when to provided', () => {
@@ -33,7 +48,7 @@ describe('ZnsLink', () => {
       route: 'tacos.street.pollo',
     });
 
-    expect(wrapper.find(Link).prop('to')).toBe('/tacos.street.pollo/feed/yo');
+    expect(wrapper.find(Link).prop('to')).toBe('/0.tacos.street.pollo/feed/yo');
   });
 
   it('handles to with leading slash', () => {
@@ -43,34 +58,34 @@ describe('ZnsLink', () => {
       route: 'tacos.street.pollo',
     });
 
-    expect(wrapper.find(Link).prop('to')).toBe('/tacos.street.pollo/feed/yo');
+    expect(wrapper.find(Link).prop('to')).toBe('/0.tacos.street.pollo/feed/yo');
   });
 
   it('renders contextual link when only to provided', () => {
     const wrapper = subject({
       to: 'yo',
-      location: { pathname: '/burgers.cheese37.0/feed' }
+      location: { pathname: '/0.burgers.cheese37.0/feed' }
     });
 
-    expect(wrapper.find(Link).prop('to')).toBe('/burgers.cheese37.0/feed/yo');
+    expect(wrapper.find(Link).prop('to')).toBe('/0.burgers.cheese37.0/feed/yo');
   });
 
   it('uses current route if no route provided', () => {
-    const wrapper = subject({ location: { pathname: '/burgers.cheese/feed' }, app: 'members' });
+    const wrapper = subject({ location: { pathname: '/0.burgers.cheese/feed' }, app: 'members' });
 
-    expect(wrapper.find(Link).prop('to')).toBe('/burgers.cheese/members');
+    expect(wrapper.find(Link).prop('to')).toBe('/0.burgers.cheese/members');
   });
 
   it('uses current route if no route provided and route has digits', () => {
-    const wrapper = subject({ location: { pathname: '/burgers.cheese37.0/feed' }, app: 'members' });
+    const wrapper = subject({ location: { pathname: '/0.burgers.cheese37.0/feed' }, app: 'members' });
 
-    expect(wrapper.find(Link).prop('to')).toBe('/burgers.cheese37.0/members');
+    expect(wrapper.find(Link).prop('to')).toBe('/0.burgers.cheese37.0/members');
   });
 
   it('uses current app if no app provided', () => {
-    const wrapper = subject({ location: { pathname: '/burgers.cheese/feed' }, route: 'tacos.street.pollo' });
+    const wrapper = subject({ location: { pathname: '/0.burgers.cheese/feed' }, route: 'tacos.street.pollo' });
 
-    expect(wrapper.find(Link).prop('to')).toBe('/tacos.street.pollo/feed');
+    expect(wrapper.find(Link).prop('to')).toBe('/0.tacos.street.pollo/feed');
   });
 
   it('renders children', () => {

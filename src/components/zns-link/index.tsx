@@ -30,7 +30,13 @@ export class Component extends React.Component<Properties> {
   }
 
   get fullRoute() {
-    return `/${this.route}/${this.app}${this.path}`;
+    let route = this.route;
+
+    if (route !== '0' && !route.startsWith('0.')) {
+      route = `0.${route}`;
+    }
+
+    return `/${route}/${this.app}${this.path}`;
   }
 
   get path() {
