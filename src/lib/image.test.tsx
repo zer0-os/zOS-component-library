@@ -1,9 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Link } from 'react-router-dom';
 
 import { getSource, getSourceUrl } from './image';
-// import { Image } from 'src/store/model';
 
 describe('image', () => {
   describe('getSourceUrl', () => {

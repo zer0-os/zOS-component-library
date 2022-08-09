@@ -22,6 +22,10 @@ export interface Properties {
   minHeight?: string;
   style?: React.CSSProperties;
   local?: boolean;
+
+  loadImage?: any;
+  getSource?: any;
+  getSourceUrl?: any;
 }
 
 export type ImageOptions = ImageFetchOptions;
@@ -29,6 +33,18 @@ export type ImageOptions = ImageFetchOptions;
 const cache = {};
 
 export class BackgroundImage extends React.Component<Properties> {
+  private loadImage;
+  private getSource;
+  private getSourceUrl;
+
+  constructor(props) {
+    super(props);
+
+    this.loadImage = props.loadImage || loadImage;
+    this.getSource = props.getSource || getSource;
+    this.getSourceUrl = props.getSourceUrl || getSourceUrl;
+  }
+
   root = null;
   source: string = null;
   animationEnded: () => void = null;
@@ -40,7 +56,7 @@ export class BackgroundImage extends React.Component<Properties> {
   }
 
   componentWillReceiveProps(nextProps: Properties) {
-    if (getSourceUrl(this.props.source) !== getSourceUrl(nextProps.source)) {
+    if (this.getSourceUrl(this.props.source) !== this.getSourceUrl(nextProps.source)) {
       this.transitionToNewImage(nextProps);
     }
 
@@ -128,15 +144,14 @@ export class BackgroundImage extends React.Component<Properties> {
       return this.onLoad(source, alwaysFadeIn);
     }
 
-    this.source = getSource({ src: source, options });
+    this.source = this.getSource({ src: source, options });
     this.root._backgroundSrc = this.source;
-
     if (this.source in cache || this.source.indexOf('data:') === 0) {
       alwaysFadeIn = alwaysFadeIn === undefined ? true : alwaysFadeIn;
       return this.onLoad(this.source, alwaysFadeIn);
     }
 
-    loadImage(this.source, (err, img) => {
+    this.loadImage(this.source, (err, img) => {
       this.setCache(this.source, img);
       this.onLoad(this.source, true);
     });
