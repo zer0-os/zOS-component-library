@@ -14,9 +14,16 @@ describe('background-image', () => {
       return callback(undefined, <img src={source} />);
     };
 
+    const provider = { ...{
+      getSource: () => { return `http://res.cloudinary.com/image/fetch/https://zer0.io/assets/alt/${uuid.v4()}.png` },
+      getSourceUrl: () => { return `https://zer0.io/assets/alt/${uuid.v4()}.png` }
+    }, ...props.provider };
+    delete props.provider;
+
     const allProps: Properties = {
       source,
       loadImage,
+      provider,
       ...props,
     };
 
@@ -59,12 +66,27 @@ describe('background-image', () => {
     const source = `http://res.cloudinary.com/image/fetch/blob/https://zer0.io/assets/alt/${uuid.v4()}.png`;
     const expectation = { src: source, options: { width: 330, crop: 'fill' } };
 
-    const getSource = jest.fn(() => { return expectation.src });
+    const provider = { getSource: jest.fn(() => { return expectation.src }) };
 
-    subject({ source: expectation.src, options: expectation.options, getSource });
+    subject({ provider, source: expectation.src, options: expectation.options });
 
-    expect(getSource).toHaveBeenCalledWith(expectation);
+    expect(provider.getSource).toHaveBeenCalledWith(expectation);
   });
+
+  it('verifies ref after getSource', () => {
+    const source = `https://zer0.io/assets/alt/${uuid.v4()}.png`;
+
+    const provider = { getSource: jest.fn(() => { return source }) };
+
+    const wrapper = subject({ provider });
+
+    const ref = wrapper.find('div').getDOMNode();
+
+    expect(ref.style['background-image']).toEqual(`url(${source})`);
+    expect(ref.className).toInclude('background-image');
+    expect(ref.className).toInclude('fade-in');
+  });
+
 
   it('verifies onImageLoad callback', () => {
     const expectation = jest.fn();
@@ -154,30 +176,14 @@ describe('background-image', () => {
     expect(getSource).not.toHaveBeenCalled();
   });
 
-  it('verifies ref after loadImage', () => {
-    const source = `https://zer0.io/assets/alt/${uuid.v4()}.png`;
-
-    const loadImage = (_notUsed, callback) => {
-      return callback(undefined, source);
-    };
-
-    const wrapper = subject({ source, loadImage });
-
-    const ref = wrapper.find('div').getDOMNode();
-
-    expect(ref.style['background-image']).toEqual(`url(${source})`);
-    expect(ref.className).toInclude('background-image');
-    expect(ref.className).toInclude('fade-in');
-  });
-
   it('verifies getSourceUrl', () => {
-    const getSourceUrl = jest.fn(() => { return `https://zer0.io/assets/alt/${uuid.v4()}.png` });
+    const provider = { getSourceUrl: jest.fn(() => { return `https://zer0.io/assets/alt/${uuid.v4()}.png` }) };
 
-    const wrapper = subject({ getSourceUrl });
+    const wrapper = subject({ provider });
 
     const source = `https://zer0.io/assets/alt/${uuid.v4()}.png`;
     wrapper.setProps({ source });
 
-    expect(getSourceUrl).toHaveBeenCalledWith(source);
+    expect(provider.getSourceUrl).toHaveBeenCalledWith(source);
   });
 });

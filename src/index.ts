@@ -2,8 +2,8 @@ export { IconButton } from './components/icon-button';
 export { Icons } from './components/icon-button/icons';
 
 export { BackgroundImage } from './components/background-image';
-import { Properties as BackgroundImageProperties } from './components/background-image';
-export type { BackgroundImageProperties };
+import { Properties as BackgroundImageProperties, ImageOptions as BackgroundImageOptions } from './components/background-image';
+export type { BackgroundImageProperties, BackgroundImageOptions };
 
 export { Button } from './components/button';
 export { ButtonLink } from './components/button-link'

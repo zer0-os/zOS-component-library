@@ -3,8 +3,6 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { loadImage } from '../../lib/load-image';
-import { ImageFetchOptions } from '../../lib/cdn';
-import { getSource, getSourceUrl } from '../../lib/image';
 
 export interface Properties {
   source: string;
@@ -23,26 +21,32 @@ export interface Properties {
   style?: React.CSSProperties;
   local?: boolean;
 
+  provider: any;
   loadImage?: any;
-  getSource?: any;
-  getSourceUrl?: any;
 }
 
-export type ImageOptions = ImageFetchOptions;
+export interface ImageOptions {
+  width?: number;
+  height?: number;
+  crop?: 'thumb' | 'fill' | 'lfill' | 'fit';
+  gravity?: 'auto' | 'face:auto' | 'faces:auto';
+  radius?: 'max';
+  format?: 'png' | 'jpg'; // this option only works if you don't provide an extension with the filename
+  fetch_format?: 'png' | 'jpg'; // force the format even if a different format specified in filename
+  background?: 'black' | 'transparent';
+  transformation?: any[];
+  resource_type?: 'image' | 'video';
+}
 
 const cache = {};
 
 export class BackgroundImage extends React.Component<Properties> {
   private loadImage;
-  private getSource;
-  private getSourceUrl;
 
   constructor(props) {
     super(props);
 
     this.loadImage = props.loadImage || loadImage;
-    this.getSource = props.getSource || getSource;
-    this.getSourceUrl = props.getSourceUrl || getSourceUrl;
   }
 
   root = null;
@@ -56,7 +60,7 @@ export class BackgroundImage extends React.Component<Properties> {
   }
 
   componentWillReceiveProps(nextProps: Properties) {
-    if (this.getSourceUrl(this.props.source) !== this.getSourceUrl(nextProps.source)) {
+    if (this.props.provider.getSourceUrl(this.props.source) !== this.props.provider.getSourceUrl(nextProps.source)) {
       this.transitionToNewImage(nextProps);
     }
 
@@ -144,7 +148,7 @@ export class BackgroundImage extends React.Component<Properties> {
       return this.onLoad(source, alwaysFadeIn);
     }
 
-    this.source = this.getSource({ src: source, options });
+    this.source = this.props.provider.getSource({ src: source, options });
     this.root._backgroundSrc = this.source;
     if (this.source in cache || this.source.indexOf('data:') === 0) {
       alwaysFadeIn = alwaysFadeIn === undefined ? true : alwaysFadeIn;
