@@ -15,8 +15,8 @@ describe('background-image', () => {
     };
 
     const provider = { ...{
-      getSource: () => { return `http://res.cloudinary.com/image/fetch/https://zer0.io/assets/alt/${uuid.v4()}.png` },
-      getSourceUrl: () => { return `https://zer0.io/assets/alt/${uuid.v4()}.png` }
+      getSourceUrl: () => { return source },
+      getSource: () => { return `http://res.cloudinary.com/image/fetch/${source}` },
     }, ...props.provider };
     delete props.provider;
 
@@ -86,7 +86,6 @@ describe('background-image', () => {
     expect(ref.className).toInclude('background-image');
     expect(ref.className).toInclude('fade-in');
   });
-
 
   it('verifies onImageLoad callback', () => {
     const expectation = jest.fn();
