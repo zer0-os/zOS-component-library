@@ -1,0 +1,21 @@
+.lightbox {
+  .ril__loadingContainer {
+    .ril__loadingCircle {
+      width: 350px;
+      height: 350px;
+      animation: fadein var(--animation-duration-quadruple, 1200ms) ease-out forwards;
+    }
+
+    .ril__loadingCirclePoint {
+      display: none;
+    }
+  }
+
+  .ril__image{
+    animation: fadein var(--animation-duration-default, 300ms) ease-out forwards;
+  }
+
+  .ril__toolbar {
+    background: none;
+  }
+}
