@@ -53,6 +53,7 @@
   "dependencies": {
     "@giphy/js-types": "^4.2.1",
     "classnames": "^2.3.1",
+    "cloudinary-core": "^2.13.0",
     "global": "^4.4.0",
     "load-img": "^1.0.0",
     "lodash": "^4.17.21",
