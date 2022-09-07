@@ -29,7 +29,7 @@ describe('lightbox', () => {
 
   it('defaults to the main image as the first', function() {
     const wrapper = subject();
-  
+
     expect(wrapper.find(ReactImageLightbox).prop('mainSrc')).toEqual(cloudinaryify(items[0].url));
   });
 
@@ -50,7 +50,7 @@ describe('lightbox', () => {
     });
   });
 
-  it('moves next on the lightbox', function() {
+  it('cycles through images on move next', function() {
     const wrapper = subject();
 
     expect(wrapper.find(ReactImageLightbox).prop('mainSrc')).toEqual(cloudinaryify(items[0].url));
@@ -65,7 +65,7 @@ describe('lightbox', () => {
     expect(wrapper.find(ReactImageLightbox).prop('mainSrc')).toEqual(cloudinaryify(items[0].url));
   });
 
-  it('moves previous on the lightbox', function() {
+  it('cycles through images on move previous', function() {
     const wrapper = subject();
 
     expect(wrapper.find(ReactImageLightbox).prop('mainSrc')).toEqual(cloudinaryify(items[0].url));
@@ -80,7 +80,7 @@ describe('lightbox', () => {
     expect(wrapper.find(ReactImageLightbox).prop('mainSrc')).toEqual(cloudinaryify(items[0].url));
   });
 
-  it('closes the lightbox', function() {
+  it('closes', function() {
     const onClose = jest.fn();
 
     const wrapper = subject({ onClose });
@@ -98,21 +98,22 @@ describe('lightbox', () => {
     expect(wrapper.find(ReactImageLightbox).prop('prevSrc')).toBeFalsy();
   });
 
-  it('verifies width constraint', function() {
-    const assets = { url: 'blah.jpg', type: 'image', width: 5000 };
-    const provider = { fitWithinBox: jest.fn() };
-
-    subject({ items: [assets], provider });
-
-    expect(provider.fitWithinBox).toHaveBeenCalledWith(assets, 2000, 1500);
-  });
-
-  it('verifies height constraint', function() {
-    const image = { url: 'blah.jpg', type: 'image', height: 5000 };
+  it('verifies fitWithinBox', function() {
+    const image = { url: 'blah.jpg', type: 'image' };
     const provider = { fitWithinBox: jest.fn() };
 
     subject({ items: [image], provider });
 
-    expect(provider.fitWithinBox).toHaveBeenCalledWith(image, 2000, 1500);
+    expect(provider.fitWithinBox).toHaveBeenCalledWith(image);
+  });
+
+  it('verifies getSource', function() {
+    const image = { url: 'blah.jpg', type: 'image' };
+    const options = { crop: 'fill', height: 123 };
+    const provider = { getSource: jest.fn(), fitWithinBox: () => { return options } };
+
+    subject({ items: [image], provider });
+
+    expect(provider.getSource).toHaveBeenCalledWith({ src: image.url, options });
   });
 });

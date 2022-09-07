@@ -99,7 +99,7 @@ export default class CloudinaryProvider {
     return source;
   }
 
-  fitWithinBox(media: Media, maxWidth: number, maxHeight: number): ImageFetchOptions {
+  fitWithinBox(media: Media, maxWidth: number = 2000, maxHeight: number = 1500): ImageFetchOptions {
     const imageOptions = {} as ImageFetchOptions;
 
     if (media.height >= media.width) {

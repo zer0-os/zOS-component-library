@@ -41,50 +41,57 @@ export class Lightbox extends React.Component<Properties, State> {
     }
   }
 
-  closeLightBox = () => {
+  onClose = () => {
     this.props.onClose();
   }
 
-  movePrevLightBox = () => {
-    this.setState({ index: (this.state.index + this.props.items.length - 1) % this.props.items.length });
+  getPreviousItemIndex = (index, items) => {
+    return (index + items.length - 1) % items.length;
   }
 
-  moveNextLightBox = () => {
-    this.setState({ index: (this.state.index + 1) % this.props.items.length });
+  onMovePrevious = () => {
+    this.setState({ index: this.getPreviousItemIndex(this.state.index, this.props.items) });
+  }
+
+  getNextItemIndex = (index, items) => {
+    return (index + items.length + 1) % items.length;
+  }
+
+  onMoveNext = () => {
+    this.setState({ index: this.getNextItemIndex(this.state.index, this.props.items) });
   }
 
   get items() {
     const { items, provider } = this.props;
     return items.map(media => {
       if (media.type === 'image') {
-        const options = provider.fitWithinBox(media, 2000, 1500);
-        return provider.getSource({src: media.url, options});
+        const options = provider.fitWithinBox(media);
+        return provider.getSource({ src: media.url, options });
       }
-      console.log(media);
       return media.url;
     });
   }
 
   render() {
     const items = this.items;
+    const itemsLength = items.length;
     const index = this.state.index;
 
-    const numItems = items.length;
-    const mainItem = items[index];
-    const previousItem = numItems > 1 ? items[(index + numItems - 1) % numItems] : null;
-    const nextItem = numItems > 1 ? items[(index + 1) % numItems] : null;
+    const activeItem = items[index];
+    const previousItem = itemsLength > 1 ? items[this.getPreviousItemIndex(index, items)] : null;
+    const nextItem = itemsLength > 1 ? items[this.getNextItemIndex(index, items)] : null;
 
     return (
       <ReactImageLightbox
-        mainSrc={mainItem}
+        mainSrc={activeItem}
         nextSrc={nextItem}
         prevSrc={previousItem}
         animationOnKeyInput
         enableZoom={false}
         wrapperClassName='lightbox'
-        onCloseRequest={this.closeLightBox}
-        onMovePrevRequest={this.movePrevLightBox}
-        onMoveNextRequest={this.moveNextLightBox}
+        onCloseRequest={this.onClose}
+        onMovePrevRequest={this.onMovePrevious}
+        onMoveNextRequest={this.onMoveNext}
       />
     );
   }

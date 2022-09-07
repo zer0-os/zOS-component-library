@@ -100,4 +100,20 @@ describe('cloudinary/service', () => {
       expect(result).toEqual(`${cloudinaryPrefix}video/upload/c_fill,h_200,w_100/eggs.jpg`);
     });
   });
+
+  describe('fitWithinBox', () => {
+    it('verifies height crop', function () {
+      const image = { height: 3000, width: 1500 };
+      const result = cloudinaryProvider.fitWithinBox(image);
+
+      expect(result).toEqual({ crop: 'fill', height: 1500 });
+    });
+
+    it('verifies width crop', function () {
+      const image = { width: 4000 };
+      const result = cloudinaryProvider.fitWithinBox(image);
+
+      expect(result).toEqual({ crop: 'fill', width: 2000 });
+    });
+  });
 });
