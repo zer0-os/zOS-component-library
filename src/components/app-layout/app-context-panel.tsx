@@ -9,13 +9,17 @@ export class AppContextPanel extends React.Component<{}, State> {
   state = { isOpen: false };
 
   handleClick = () => {
-    this.setState({ isOpen: true });
+    this.setState({ isOpen: !this.isOpen });
+  }
+
+  get isOpen() {
+    return this.state.isOpen;
   }
 
   render() {
     const className = classNames('app-context-panel', {
-      'open': this.state.isOpen,
-      'closed': !this.state.isOpen,
+      'open': this.isOpen,
+      'closed': !this.isOpen,
     });
 
     return (

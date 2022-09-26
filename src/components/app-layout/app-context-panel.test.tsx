@@ -15,12 +15,16 @@ describe('AppContextPanel', () => {
     expect(wrapper.find('.app-context-panel__content .tacos').exists()).toBe(true);
   });
 
-  it('adds class when target is clicked', () => {
+  it('adds toggles class when target is clicked', () => {
     const wrapper = subject();
 
     wrapper.find('.app-context-panel__target').simulate('click');
 
     expect(wrapper.find('.app-context-panel').hasClass('open')).toBe(true);
+
+    wrapper.find('.app-context-panel__target').simulate('click');
+
+    expect(wrapper.find('.app-context-panel').hasClass('closed')).toBe(true);
   });
 
   it('has closed class when rendered by default', () => {
