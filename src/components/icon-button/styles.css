@@ -10,15 +10,14 @@
   height: 24px;
 }
 
+.icon-button__icon.zui-filter path,
 .icon-button__icon.zui-chevron-left path,
 .icon-button__icon.zui-chevron-right path {
   fill: var(--font-color-primary);
 }
 
+.icon-button__icon.zui-filter path,
+.icon-button__icon.zui-moon path,
 .icon-button__icon.zui-sun path {
-  stroke: var(--font-color-primary);
-}
-
-.icon-button__icon.zui-moon path {
   stroke: var(--font-color-primary);
 }
