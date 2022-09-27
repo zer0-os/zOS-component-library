@@ -1,0 +1,10 @@
+.app-context-panel {
+  position: relative;
+  z-index: 1;
+}
+
+.app-context-panel__target {
+  position: absolute;
+  right: -20px;
+  top: 37%;
+}
