@@ -3,8 +3,37 @@
   z-index: 1;
 }
 
-.app-context-panel__target {
+.app-context-panel__target-wrapper {
   position: absolute;
-  right: -20px;
+  right: -24px;
   top: 37%;
+}
+
+.app-context-panel__target {
+  height: 24px;
+  width: 24px;
+  padding: 6px;
+  border-radius: 0 32px 32px 0;
+}
+
+.app-context-panel__target-top:before,
+.app-context-panel__target-bottom:after {
+  content: " ";
+  background-color: var(--platform-background);
+  display: block;
+
+  width: 16px;
+  height: 24px;
+  border-radius: 9999px;
+}
+
+.app-context-panel__target-top:before {
+  position: relative;
+  top: -12px;
+}
+
+.app-context-panel__target-bottom,
+.app-context-panel__target-top {
+  width: 8px;
+  height: 12px;
 }

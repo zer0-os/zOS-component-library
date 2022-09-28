@@ -26,7 +26,11 @@ export class AppContextPanel extends React.Component<{}, State> {
 
     return (
       <div className={className}>
-        <IconButton icon={Icons.Filter} size={IconSize.Medium} className='app-context-panel__target' onClick={this.handleClick} />
+        <div className='app-context-panel__target-wrapper'>
+          <div className='app-context-panel__target-top' />
+          <IconButton icon={Icons.Filter} size={IconSize.Medium} className='app-context-panel__target' onClick={this.handleClick} />
+          <div className='app-context-panel__target-bottom' />
+        </div>
         <div className='app-context-panel__content'>
           {this.props.children}
         </div>
