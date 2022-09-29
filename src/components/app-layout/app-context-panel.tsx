@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { IconButton, IconSize } from '../icon-button';
-import { Icons } from '../..';
+import { ContextPanelTab } from './context-panel-tab';
 
 interface State {
   isOpen: boolean;
@@ -26,14 +25,10 @@ export class AppContextPanel extends React.Component<{}, State> {
 
     return (
       <div className={className}>
-        <div className='app-context-panel__target-wrapper'>
-          <div className='app-context-panel__target-top' />
-          <IconButton icon={Icons.Filter} size={IconSize.Medium} className='app-context-panel__target' onClick={this.handleClick} />
-          <div className='app-context-panel__target-bottom' />
-        </div>
         <div className='app-context-panel__content'>
           {this.props.children}
         </div>
+        <ContextPanelTab onClick={this.handleClick} className='app-context-panel__target' />
       </div>
     );
   }
