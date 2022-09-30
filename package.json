@@ -1,6 +1,6 @@
 {
   "name": "@zer0-os/zos-component-library",
-  "version": "0.14.0",
+  "version": "0.14.1",
   "description": "component library for zos",
   "main": "dist/index.js",
   "scripts": {
