@@ -5,29 +5,9 @@
   display: inline-block;
 }
 
-.icon-button.small .icon-button__icon {
-  width: 8px;
-  height: 8px;
-}
-
-.icon-button.medium .icon-button__icon {
-  width: 12px;
-  height: 12px;
-}
-
-.icon-button.large .icon-button__icon {
-  width: 16px;
-  height: 16px;
-}
-
-.icon-button.extra-large .icon-button__icon {
+.icon-button__icon {
   width: 24px;
   height: 24px;
-}
-
-.icon-button.extra-extra-large .icon-button__icon {
-  width: 32px;
-  height: 32px;
 }
 
 .icon-button__icon.zui-chevron-left path,
@@ -35,8 +15,10 @@
   fill: var(--font-color-primary);
 }
 
-.icon-button__icon.zui-filter path,
-.icon-button__icon.zui-moon path,
 .icon-button__icon.zui-sun path {
+  stroke: var(--font-color-primary);
+}
+
+.icon-button__icon.zui-moon path {
   stroke: var(--font-color-primary);
 }
