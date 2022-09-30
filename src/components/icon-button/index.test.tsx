@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { Icons } from './icons';
-import { Component, IconSize } from '.';
+import { Component } from '.';
 
 describe('IconButton', () => {
   const subject = (props: any = {}) => {
@@ -19,42 +19,6 @@ describe('IconButton', () => {
     const wrapper = subject({ className: 'tacos' });
 
     expect(wrapper.find('.icon-button').hasClass('tacos')).toBe(true);
-  });
-
-  it('adds default size class', () => {
-    const wrapper = subject();
-
-    expect(wrapper.find('.icon-button').hasClass('large')).toBe(true);
-  });
-
-  it('adds class for small size', () => {
-    const wrapper = subject({ size: IconSize.Small });
-
-    expect(wrapper.find('.icon-button').hasClass('small')).toBe(true);
-  });
-
-  it('adds class for medium size', () => {
-    const wrapper = subject({ size: IconSize.Medium });
-
-    expect(wrapper.find('.icon-button').hasClass('medium')).toBe(true);
-  });
-
-  it('adds class for large size', () => {
-    const wrapper = subject({ size: IconSize.Large });
-
-    expect(wrapper.find('.icon-button').hasClass('large')).toBe(true);
-  });
-
-  it('adds class for extra large size', () => {
-    const wrapper = subject({ size: IconSize.XLarge });
-
-    expect(wrapper.find('.icon-button').hasClass('extra-large')).toBe(true);
-  });
-
-  it('adds class for extra extra large size', () => {
-    const wrapper = subject({ size: IconSize.XXLarge });
-
-    expect(wrapper.find('.icon-button').hasClass('extra-extra-large')).toBe(true);
   });
 
   it('adds class to svg element', () => {
