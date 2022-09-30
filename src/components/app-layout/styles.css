@@ -1,6 +1,7 @@
 .app-context-panel {
   position: relative;
   z-index: 1;
+  background-color: var(--background-color-app-panel);
 }
 
 .app-context-panel__target {
