@@ -1,16 +1,39 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ContextPanelTab } from './context-panel-tab';
+import { AppLayoutContext, withContext } from './context';
+
+interface Properties {
+  context: AppLayoutContext;
+}
 
 interface State {
   isOpen: boolean;
 }
 
-export class AppContextPanel extends React.Component<{}, State> {
-  state = { isOpen: false };
+export class Component extends React.Component<Properties, State> {
+  constructor(props) {
+    super(props);
+
+    this.state = { isOpen: props.context.isContextPanelOpen };
+  }
+
+  componentDidUpdate(prevProps: Readonly<Properties>) {
+    const { context: prevContext } = prevProps;
+    const { isContextPanelOpen: isOpen } = this.props.context;
+
+    if (isOpen !== prevContext.isContextPanelOpen) {
+      this.setState({ isOpen });
+    }
+  }
 
   handleClick = () => {
-    this.setState({ isOpen: !this.isOpen });
+    const newIsOpen = !this.isOpen;
+
+    this.setState(
+      { isOpen: newIsOpen },
+      () => this.props.context.setIsContextPanelOpen(newIsOpen),
+    );
   }
 
   get isOpen() {
@@ -33,3 +56,5 @@ export class AppContextPanel extends React.Component<{}, State> {
     );
   }
 }
+
+export const AppContextPanel = withContext<{}>(Component);
