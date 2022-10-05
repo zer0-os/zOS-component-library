@@ -3,15 +3,15 @@ import React from 'react';
 export interface AppLayoutContext {
   hasContextPanel: boolean;
   isContextPanelOpen: boolean;
-  // XXX - do we want to just assume these are set by provider,
-  // or wrap the context?
-  setHasContextPanel?: (hasContextPanel: boolean) => void;
-  setIsContextPanelOpen?: (isContextPanelOpen: boolean) => void;
+  setHasContextPanel: (hasContextPanel: boolean) => void;
+  setIsContextPanelOpen: (isContextPanelOpen: boolean) => void;
 }
 
 export const Context = React.createContext<AppLayoutContext>({
   hasContextPanel: false,
   isContextPanelOpen: false,
+  setHasContextPanel: (_hasContextPanel: boolean) => undefined,
+  setIsContextPanelOpen: (_isContextPanelOpen: boolean) => undefined,
 });
 
 export function withContext<T>(Component: any) {
