@@ -44,7 +44,7 @@ describe('AppLayout', () => {
   it('updates context on render with context panel as child', () => {
     const setHasContextPanel = jest.fn();
 
-    subject({ context: getContext({ setHasContextPanel }) }, <AppContextPanel />);
+    subject({ context: getContext({ setHasContextPanel }) }, <AppContextPanel children={<div />} />);
 
     expect(setHasContextPanel).toHaveBeenCalledWith(true);
   });
@@ -55,5 +55,47 @@ describe('AppLayout', () => {
     subject({ context: getContext({ setHasContextPanel }) }, <div />);
 
     expect(setHasContextPanel).toHaveBeenCalledWith(false);
+  });
+
+  it('adds classes for no context panel', () => {
+    const wrapper = subject({
+      context: getContext({
+        hasContextPanel: false,
+        isContextPanelOpen: false,
+      }),
+    });
+
+    const layout = wrapper.find('.app-layout');
+
+    expect(layout.hasClass('context-panel-open')).toBe(false);
+    expect(layout.hasClass('has-context-panel')).toBe(false);
+  });
+
+  it('sets classes when hasContextPanel is true', () => {
+    const wrapper = subject({
+      context: getContext({
+        hasContextPanel: true,
+        isContextPanelOpen: false,
+      }),
+    });
+
+    const layout = wrapper.find('.app-layout');
+
+    expect(layout.hasClass('context-panel-open')).toBe(false);
+    expect(layout.hasClass('has-context-panel')).toBe(true);
+  });
+
+  it('sets classes when isContextPanelOpen is true', () => {
+    const wrapper = subject({
+      context: getContext({
+        hasContextPanel: true,
+        isContextPanelOpen: true,
+      }),
+    });
+
+    const layout = wrapper.find('.app-layout');
+
+    expect(layout.hasClass('context-panel-open')).toBe(true);
+    expect(layout.hasClass('has-context-panel')).toBe(true);
   });
 });
