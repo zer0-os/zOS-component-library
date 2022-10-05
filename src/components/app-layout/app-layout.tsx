@@ -1,15 +1,19 @@
-import React, { PropsWithChildren } from 'react';
+import React, { ReactNode } from 'react';
 import classNames from 'classnames';
 
 import { AppLayoutContext, withContext } from './context';
 import { AppContextPanel } from '.';
 
-export interface Properties {
+export interface Properties extends PublicProperties {
   context: AppLayoutContext;
+}
+
+interface PublicProperties {
+  children: ReactNode;
   className?: string;
 }
 
-export class Component extends React.Component<PropsWithChildren<Properties>> {
+export class Component extends React.Component<Properties> {
   componentDidMount() {
     this.validateChildren();
   }
@@ -31,4 +35,4 @@ export class Component extends React.Component<PropsWithChildren<Properties>> {
   }
 }
 
-export const AppLayout = withContext<{}>(Component);
+export const AppLayout = withContext<PublicProperties>(Component);

@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
+
 import classNames from 'classnames';
 import { ContextPanelTab } from './context-panel-tab';
 import { AppLayoutContext, withContext } from './context';
 
-interface Properties {
+interface Properties extends PublicProperties {
   context: AppLayoutContext;
+}
+
+interface PublicProperties {
+  children: ReactNode;
 }
 
 interface State {
@@ -57,4 +62,4 @@ export class Component extends React.Component<Properties, State> {
   }
 }
 
-export const AppContextPanel = withContext<{}>(Component);
+export const AppContextPanel = withContext<PublicProperties>(Component);
