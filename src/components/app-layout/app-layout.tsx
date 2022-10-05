@@ -31,7 +31,13 @@ export class Component extends React.Component<Properties> {
   };
 
   render() {
-    return <div className={classNames('app-layout', this.props.className)}>{this.props.children}</div>;
+    const { hasContextPanel, isContextPanelOpen } = this.props.context;
+    const className = classNames('app-layout', this.props.className, {
+      'context-panel-open': isContextPanelOpen,
+      'has-context-panel': hasContextPanel,
+    });
+
+    return <div className={className}>{this.props.children}</div>;
   }
 }
 
