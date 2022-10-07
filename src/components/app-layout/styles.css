@@ -20,6 +20,10 @@
   fill: var(--background-color-app-panel);
 }
 
+.context-panel-tab:hover .context-panel-tab__tab PATH {
+  fill: var(--actionable-hover-background);
+}
+
 .context-panel-tab__icon {
   position: absolute;
   top: 44px;
@@ -29,5 +33,5 @@
 }
 
 .context-panel-tab__icon PATH {
-  stroke: var(--actionable-inactive-color);
+  stroke: var(--actionable-color);
 }
