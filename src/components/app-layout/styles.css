@@ -21,7 +21,16 @@
 }
 
 .context-panel-tab:hover .context-panel-tab__tab PATH {
-  fill: var(--actionable-hover-background);
+  fill: url(#context-panel-tab__opacity-gradient) var(--actionable-hover-background);
+}
+
+.context-panel-tab__opacity-gradient-first-stop {
+  stop-color: var(--background-color-app-panel);
+}
+
+.context-panel-tab__opacity-gradient-second-stop,
+.context-panel-tab__opacity-gradient-third-stop {
+  stop-color: var(--actionable-hover-background);
 }
 
 .context-panel-tab__icon {
