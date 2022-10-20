@@ -36,11 +36,14 @@
 .context-panel-tab__icon {
   position: absolute;
   top: 44px;
-  left: -2px;
-  height: 16px;
-  width: 16px;
+  left: 0px;
+  width: 14px;
 }
 
-.context-panel-tab__icon PATH {
-  stroke: var(--actionable-color);
+.context-panel-tab__icon-item {
+  background: white;
+  height: 2px;
+  display: block;
+  border-radius: 3px;
+  margin-bottom: 2px;
 }

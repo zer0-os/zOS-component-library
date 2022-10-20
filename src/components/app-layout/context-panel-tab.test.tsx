@@ -21,10 +21,10 @@ describe('ContextPanelTab', () => {
     expect(wrapper.find('svg.context-panel-tab__tab').exists()).toBe(true);
   });
 
-  it('renders svg icon', () => {
+  it('renders div icon', () => {
     const wrapper = subject();
 
-    expect(wrapper.find('svg.context-panel-tab__icon').exists()).toBe(true);
+    expect(wrapper.find('div.context-panel-tab__icon').exists()).toBe(true);
   });
 
   it('propagates click event', () => {
