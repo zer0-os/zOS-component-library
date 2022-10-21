@@ -7,6 +7,7 @@ describe('EthAddress', () => {
   const subject = (props: any = {}) => {
     const allProps = {
       address: '',
+      onClick: () => undefined,
       ...props,
     };
 
@@ -33,5 +34,16 @@ describe('EthAddress', () => {
     const wrapper = subject({ address });
 
     expect(wrapper.find('.eth-address__address').prop('title')).toBe(address);
+  });
+
+  it('fires onClick when disconnect btn clicked', () => {
+    const onClick = jest.fn();
+    const address = '0x0D1C97113D70E4D04345D55807CB19C648E17FBA';
+
+    const wrapper = subject({ address, onClick });
+
+    wrapper.find('.eth-address__panel-btn-disconnect').simulate('click');
+
+    expect(onClick).toHaveBeenCalled();
   });
 });
