@@ -28,7 +28,7 @@
 .wallet-select__header h3 {
   font-size: 18px;
   font-weight: 700;
-  color: #fff;
+  color: var(--font-color-primary);
 }
 
 .wallet-select__wallet-provider {
@@ -37,7 +37,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 7px 40px;
-  color: #fff;
+  color: var(--font-color-primary);
   font-size: 16px;
   cursor: pointer;
 }
@@ -74,6 +74,7 @@
   width: 36px;
   height: 36px;
   transition: opacity var(--animation-time-medium) ease-in-out;
+  vertical-align: middle;
 }
 
 .wallet-select__footer {
