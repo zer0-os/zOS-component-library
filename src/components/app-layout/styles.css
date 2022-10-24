@@ -41,7 +41,7 @@
 }
 
 .context-panel-tab__icon-item {
-  background: white;
+  background: var(--actionable-color);
   height: 2px;
   display: block;
   border-radius: 3px;

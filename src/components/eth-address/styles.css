@@ -1,3 +1,39 @@
 .eth-address {
   display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+
+.main__wallet-manager-wrapper:hover .eth-address__panel {
+  display: block;
+  opacity: 1;
+  padding-top: 10px;
+  pointer-events: all;
+}
+
+.eth-address__panel {
+  position: absolute;
+  top: 100%;
+  right: -7px;
+  pointer-events: none;
+  transition: all 0.1s linear;
+  opacity: 0;
+}
+
+.eth-address__panel-btn {
+  display: block;
+  padding: 20px 35px;
+  z-index: 10000;
+  grid-gap: 1rem;
+  gap: 1rem;
+  border-radius: 16px;
+  background: #1a1022;
+  cursor: default;
+  border: 1px solid #472e5b;
+}
+
+.eth-address__panel-btn-disconnect {
+  color: var(--font-color-primary);
+  text-shadow: 0 0 10px var(--glow-text-color);
+  background-color: var(--background-color-primary);
 }
