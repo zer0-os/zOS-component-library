@@ -27,7 +27,7 @@
   grid-gap: 1rem;
   gap: 1rem;
   border-radius: 16px;
-  background: #1a1022;
+  background: var(--background-color-platform-navigation);
   cursor: default;
   border: 1px solid #472e5b;
 }
