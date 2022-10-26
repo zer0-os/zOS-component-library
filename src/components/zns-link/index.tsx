@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import classNames from 'classnames';
 
-export interface PublicProperties {
+export interface PublicProperties extends React.LinkHTMLAttributes<Link> {
   className?: string;
   app?: string;
   route?: string;
@@ -50,13 +50,22 @@ export class Component extends React.Component<Properties> {
 
     if (!this.pathRegex.test(currentPath)) return { route: '', app: '' };
 
-    const [, route, app ] =  currentPath.match(this.pathRegex);
+    const [, route, app] = currentPath.match(this.pathRegex);
 
     return { route, app };
   }
 
   render() {
-    return <Link className={classNames('zns-link', this.props.className)} to={this.fullRoute}>{this.props.children}</Link>;
+    const { className, children, ...rest } = this.props;
+    return (
+      <Link
+        className={classNames('zns-link', className)}
+        {...rest}
+        to={this.fullRoute}
+      >
+        {children}
+      </Link>
+    );
   }
 }
 
