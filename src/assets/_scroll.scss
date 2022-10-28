@@ -1,0 +1,14 @@
+$general-scroll-color: var(--general-scroll-color, #353535);
+$general-scroll-thumb-color: var(--general-scroll-thumb-color, #7E7E7E);
+
+@mixin scrollbar() {
+  &::-webkit-scrollbar {
+    display: initial;
+    width: 5px;
+    background-color: $general-scroll-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $general-scroll-thumb-color;
+  }
+}
