@@ -11,4 +11,8 @@ $general-scroll-thumb-color: var(--general-scroll-thumb-color, #7E7E7E);
   &::-webkit-scrollbar-thumb {
     background-color: $general-scroll-thumb-color;
   }
+
+  *::-webkit-scrollbar-corner {
+    border-radius: 0;
+  }
 }
