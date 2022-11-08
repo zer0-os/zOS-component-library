@@ -11,7 +11,6 @@
   border-radius: var(--button-box-radius);
   opacity: 0.6;
   box-shadow: 0 0 15px 4px var(--button-box-shadow-light);
-  overflow: hidden;
   cursor: pointer;
   text-transform: uppercase;
   transition: opacity var(--animation-time-short) ease-in-out;
