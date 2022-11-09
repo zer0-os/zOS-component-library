@@ -26,7 +26,6 @@
   z-index: 2;
   transition: color var(--animation-time-short) ease-in-out,
     text-shadow var(--animation-time-short) ease-in-out;
-  border-radius: var(--button-box-radius);
 }
 .button__container .button__wash {
   position: absolute;
@@ -38,6 +37,7 @@
   transition: opacity var(--animation-time-short) ease-in-out;
   opacity: 0;
   z-index: 0;
+  border-radius: var(--button-box-radius);
 }
 .button__container:after {
   content: ' ';
