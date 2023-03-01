@@ -1,6 +1,6 @@
 {
   "name": "@zer0-os/zos-component-library",
-  "version": "0.18.7",
+  "version": "0.18.8",
   "description": "component library for zos",
   "main": "dist/index.js",
   "scripts": {
@@ -51,6 +51,7 @@
     "react-router-dom": "^5.3.0"
   },
   "dependencies": {
+    "@babel/plugin-syntax-import-assertions": "^7.20.0",
     "@giphy/js-types": "^4.2.1",
     "classnames": "^2.3.1",
     "cloudinary-core": "^2.13.0",

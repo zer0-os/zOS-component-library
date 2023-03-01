@@ -59,4 +59,12 @@ describe('Button', () => {
 
     expect(onClick).toHaveBeenCalled();
   });
+
+  it('verifies tabIndex', () => {
+    const expectation = 0;
+
+    const wrapper = subject({ tabIndex: expectation });
+
+    expect(wrapper.prop('tabIndex')).toBe(expectation);
+  });
 });

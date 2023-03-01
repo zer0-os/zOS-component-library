@@ -6,6 +6,7 @@ export interface Properties {
   className?: string;
 
   onClick?: () => void;
+  tabIndex?: number;
 }
 
 export const Button: FC<Properties> = ({
@@ -13,6 +14,7 @@ export const Button: FC<Properties> = ({
   className,
   onClick,
   children,
+  tabIndex,
   ...rest
 }) => {
   const handleClick = useCallback(() => onClick && onClick(), []);
@@ -26,6 +28,7 @@ export const Button: FC<Properties> = ({
         className
       )}
       onClick={handleClick}
+      tabIndex={tabIndex}
       {...rest}
     >
       <div className='button__content'>
