@@ -6,7 +6,7 @@ export interface Properties {
   className?: string;
 
   onClick?: () => void;
-  onEnterKey?: () => void;
+  onEnterKeyPress?: () => void;
   tabIndex?: number;
 }
 
