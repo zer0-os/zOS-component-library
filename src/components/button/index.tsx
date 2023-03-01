@@ -6,6 +6,7 @@ export interface Properties {
   className?: string;
 
   onClick?: () => void;
+  onEnterKeyPress?: () => void;
   tabIndex?: number;
 }
 
@@ -13,11 +14,18 @@ export const Button: FC<Properties> = ({
   label,
   className,
   onClick,
+  onEnterKeyPress,
   children,
   tabIndex,
   ...rest
 }) => {
   const handleClick = useCallback(() => onClick && onClick(), []);
+
+  const handleKeyPress = (event) => {
+    if(event.key === 'Enter') {
+      onEnterKeyPress();
+    }
+  }
 
   return (
     <div
@@ -28,6 +36,7 @@ export const Button: FC<Properties> = ({
         className
       )}
       onClick={handleClick}
+      onKeyPress={handleKeyPress}
       tabIndex={tabIndex}
       {...rest}
     >

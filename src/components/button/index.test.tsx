@@ -60,6 +60,16 @@ describe('Button', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
+  it('propagates onEnterKeyPress', () => {
+    const onEnterKeyPress = jest.fn();
+
+    const wrapper = subject({ onEnterKeyPress });
+
+    wrapper.simulate('keypress', { key: 'Enter' })
+
+    expect(onEnterKeyPress).toHaveBeenCalled();
+  });
+
   it('verifies tabIndex', () => {
     const expectation = 0;
 
